@@ -300,6 +300,201 @@
         .font-size-reset:hover {
             background-color: #5a6268;
         }
+        
+        /* 隱藏在桌面版的漢堡選單 */
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* 行動裝置響應式設計 */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            /* 調整標題和字體大小區塊在行動裝置上的排版 */
+            h1 {
+                font-size: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            /* 調整學校標頭在行動裝置上的排版 */
+            header .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .institute-name {
+                text-align: center;
+                margin-top: 10px;
+            }
+            
+            /* 字體大小控制區塊在行動裝置上的調整 */
+            .font-size-control {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* 調整表格在行動裝置上的顯示 */
+            table {
+                display: block;
+                border: none;
+                background-color: transparent;
+            }
+            
+            /* 表格在行動裝置上優化顯示 */
+            table, thead, tbody, tr, th, td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* 隱藏表頭，因為我們會在每個數據單元格前加入標籤 */
+            thead {
+                display: none;
+            }
+            
+            /* 重設表格行的樣式 */
+            tr {
+                border-bottom: 1px solid #eee;
+                margin-bottom: 15px;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+            
+            /* 保持階段標題的顯示 */
+            tr.stage-header {
+                background-color: #e9f7fd !important;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                box-shadow: none;
+                border: none;
+            }
+            
+            tr.stage-header td {
+                font-size: 18px;
+                padding: 10px;
+                border-bottom: none;
+            }
+            
+            /* 為每個數據單元格添加文件類型 */
+            td {
+                display: flex;
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #f0f0f0;
+                position: relative;
+            }
+            
+            /* 名稱列保持全寬 */
+            td:first-child {
+                font-weight: bold;
+                border-bottom: 1px solid #ddd;
+                background-color: #f9f9f9;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+            
+            /* 文件類型數據列 */
+            td:nth-child(2):before {
+                content: "Word: ";
+                font-weight: bold;
+                margin-right: 10px;
+                min-width: 50px;
+            }
+            
+            td:nth-child(3):before {
+                content: "PDF: ";
+                font-weight: bold;
+                margin-right: 10px;
+                min-width: 50px;
+            }
+            
+            td:nth-child(4):before {
+                content: "連結: ";
+                font-weight: bold;
+                margin-right: 10px;
+                min-width: 50px;
+            }
+            
+            /* 圖示置中 */
+            td .file-icon {
+                margin-left: auto;
+            }
+            
+            /* 調整頁籤在行動裝置上的樣式 */
+            .nav-tabs {
+                flex-direction: column;
+                display: flex; /* 預設顯示選單 */
+                position: relative;
+                z-index: 100;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            
+            .nav-tabs a {
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* 返回頂部按鈕在行動裝置上的調整 */
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* 針對更小的手機螢幕 */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .school-logo {
+                height: 40px;
+            }
+            
+            .font-size-control span {
+                display: none; /* 隱藏「調整字體大小」文字節省空間 */
+            }
+            
+            /* 調整字體大小按鈕在較小螢幕上的排版 */
+            .font-size-btn {
+                padding: 3px 6px;
+                font-size: 12px;
+            }
+            
+            /* 進一步調整表格在小型手機上的顯示 */
+            td:nth-child(2):before,
+            td:nth-child(3):before,
+            td:nth-child(4):before {
+                min-width: 40px;
+            }
+            
+            tr.stage-header td {
+                font-size: 16px;
+                padding: 8px;
+            }
+        }
     </style>
     <!-- 防止頁面閃爍的立即執行代碼 -->
     <script>
@@ -337,8 +532,11 @@
         </header>
 
         <div class="container no-top-padding">
+            <!-- 不再需要漢堡選單按鈕 -->
+            <!-- <div class="menu-toggle" id="menuToggle">≡ 選單</div> -->
+            
             <!-- 新增頁籤導航 -->
-            <ul class="nav-tabs">
+            <ul class="nav-tabs" id="navTabs">
                 <li><a href="財金所順利畢業SOP.html">首頁</a></li>
                 <li><a href="表單下載.html" class="active">表單下載區</a></li>
             </ul>
@@ -571,6 +769,50 @@
                 }, 500);
             }, loadingTime);
         });
+        
+        // 漢堡選單功能已不再需要，因為選單預設顯示
+        document.addEventListener("DOMContentLoaded", function() {
+            // 檢測裝置類型並調整UI元素
+            checkDeviceAndAdjustUI();
+            
+            // 優化圖片的觸控體驗
+            optimizeImagesForTouch();
+        });
+        
+        // 檢測裝置類型並調整UI元素
+        function checkDeviceAndAdjustUI() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // 為行動裝置增強可點擊區域大小
+                enhanceTouchTargets();
+            }
+        }
+        
+        // 增強可點擊區域大小
+        function enhanceTouchTargets() {
+            // 增加按鈕和連結的點擊區域
+            var buttons = document.querySelectorAll('.font-size-btn, .back-to-top');
+            buttons.forEach(function(btn) {
+                if (btn) {
+                    btn.style.minHeight = '44px';
+                    btn.style.minWidth = '44px';
+                }
+            });
+        }
+        
+        // 優化圖片的觸控體驗
+        function optimizeImagesForTouch() {
+            var fileIcons = document.querySelectorAll('.file-icon');
+            fileIcons.forEach(function(icon) {
+                // 增加圖標的點擊區域
+                var parentLink = icon.closest('a');
+                if (parentLink) {
+                    parentLink.style.padding = '10px';
+                    parentLink.style.display = 'inline-block';
+                }
+            });
+        }
         
         // 返回頂部功能
         var backToTopBtn = document.getElementById("backToTop");

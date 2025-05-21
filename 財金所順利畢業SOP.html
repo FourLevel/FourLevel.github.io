@@ -390,14 +390,18 @@
             /* 調整頁籤在行動裝置上的樣式 */
             .nav-tabs {
                 flex-direction: column;
-                display: none; /* 預設隱藏選單 */
+                display: flex; /* 預設顯示選單 */
                 position: relative;
                 z-index: 100;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                overflow: hidden;
             }
             
-            .nav-tabs.show {
-                display: flex; /* 當添加 .show 類時顯示選單 */
-            }
+            /* 不再需要 .show 類 */
+            /*.nav-tabs.show {
+                display: flex;
+            }*/
             
             .nav-tabs a {
                 padding: 10px;
@@ -405,19 +409,9 @@
                 border-bottom: 1px solid #e0e0e0;
             }
             
-            /* 漢堡選單按鈕樣式 */
+            /* 漢堡選單按鈕樣式 - 行動裝置上不需要顯示 */
             .menu-toggle {
-                display: block;
-                background-color: #003366;
-                color: white;
-                text-align: center;
-                padding: 10px;
-                cursor: pointer;
-                font-weight: bold;
-            }
-            
-            .menu-toggle:hover {
-                background-color: #004b8d;
+                display: none;
             }
             
             /* 返回頂部按鈕在行動裝置上的調整 */
@@ -535,8 +529,8 @@
         </header>
 
         <div class="container no-top-padding">
-            <!-- 新增漢堡選單按鈕 -->
-            <div class="menu-toggle" id="menuToggle">≡ 選單</div>
+            <!-- 不再需要漢堡選單按鈕 -->
+            <!-- <div class="menu-toggle" id="menuToggle">≡ 選單</div> -->
             
             <!-- 新增頁籤導航 -->
             <ul class="nav-tabs" id="navTabs">
@@ -1151,32 +1145,6 @@
                 document.body.style.fontSize = size + "%";
                 localStorage.setItem("fontSizePercentage", size);
             }
-        });
-        
-        // 漢堡選單功能
-        document.addEventListener("DOMContentLoaded", function() {
-            var menuToggle = document.getElementById("menuToggle");
-            var navTabs = document.getElementById("navTabs");
-            
-            // 點擊漢堡選單按鈕顯示/隱藏選單
-            menuToggle.addEventListener("click", function() {
-                navTabs.classList.toggle("show");
-            });
-            
-            // 點擊選單項目後自動隱藏選單
-            var menuItems = navTabs.querySelectorAll("a");
-            menuItems.forEach(function(item) {
-                item.addEventListener("click", function() {
-                    navTabs.classList.remove("show");
-                });
-            });
-            
-            // 點擊頁面其他區域隱藏選單
-            document.addEventListener("click", function(event) {
-                if (!event.target.closest("#navTabs") && !event.target.closest("#menuToggle")) {
-                    navTabs.classList.remove("show");
-                }
-            });
         });
     </script>
 </body>
