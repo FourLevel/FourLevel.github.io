@@ -45,9 +45,6 @@
             border-bottom: 2px solid #003366;
             padding-bottom: 10px;
             margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         h2 {
             font-size: 24px;
@@ -221,244 +218,258 @@
             background-color: #e9f7fd !important;
         }
         
-        /* 字體大小控制區塊樣式 */
-        .font-size-control {
-            display: inline-flex;
+        /* 載入動畫樣式 */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            font-size: 16px;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
         
-        .font-size-control span {
-            margin-right: 8px;
-            font-weight: normal;
-            font-size: 16px;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #003366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
         
-        .font-size-btn {
-            background-color: #003366;
-            color: white;
-            border: none;
-            padding: 4px 8px;
-            margin: 0 2px;
-            cursor: pointer;
-            border-radius: 3px;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            font-size: 14px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .font-size-btn:hover {
-            background-color: #004b8d;
+        /* 頁面內容區域 */
+        #content-container {
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         
-        .font-size-reset {
-            background-color: #6c757d;
-        }
-        
-        .font-size-reset:hover {
-            background-color: #5a6268;
+        #content-container.show {
+            opacity: 1;
         }
     </style>
+    <!-- 防止頁面閃爍的立即執行代碼 -->
+    <script>
+        // 立即執行函數，在頁面渲染前就處理URL
+        (function() {
+            // 如果URL中有錨點並且是通過刷新頁面訪問的，則移除錨點
+            if (window.location.hash) {
+                // 設置一個標記，阻止瀏覽器自動滾動到錨點
+                window.scrollTo(0, 0);
+                // 通過history API替換URL，移除錨點部分
+                var urlWithoutHash = window.location.href.split('#')[0];
+                window.history.replaceState(null, '', urlWithoutHash);
+            }
+        })();
+    </script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="school-name">
-                <img src="images/台科logo-08.png" alt="國立臺灣科技大學" class="school-logo">
+    <!-- 添加載入動畫 -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- 將所有內容包裝在一個容器中 -->
+    <div id="content-container">
+        <header>
+            <div class="container">
+                <div class="school-name">
+                    <img src="images/台科logo-08.png" alt="國立臺灣科技大學" class="school-logo">
+                </div>
+                <div class="institute-name">
+                    <div>財務金融研究所</div>
+                    <div class="institute-name-en">Graduate Institute of Finance</div>
+                </div>
             </div>
-            <div class="institute-name">
-                <div>財務金融研究所</div>
-                <div class="institute-name-en">Graduate Institute of Finance</div>
-            </div>
+        </header>
+
+        <div class="container no-top-padding">
+            <!-- 新增頁籤導航 -->
+            <ul class="nav-tabs">
+                <li><a href="財金所順利畢業SOP.html">首頁</a></li>
+                <li><a href="表單下載.html" class="active">表單下載區</a></li>
+            </ul>
+            
+            <h1>表單下載區</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">檔案名稱</th>
+                        <th style="width: 16%;">Word</th>
+                        <th style="width: 16%;">PDF</th>
+                        <th style="width: 18%;">Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 入學後一年內 -->
+                    <tr class="stage-header">
+                        <td colspan="4">1. 入學後一年內</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">1.1 論文指導同意書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/論文指導同意書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/論文指導同意書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">1.2 論文共同指導教授同意書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/共同指導教授同意書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/共同指導教授同意書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">1.3 變更論文指導教授申請書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/變更論文指導教授申請書.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/變更論文指導教授申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    
+                    <!-- 口試前 -->
+                    <tr class="stage-header">
+                        <td colspan="4">2. 口試前</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.1 學位論文專業領域審查申請表</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位論文專業領域審查申請表_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位論文專業領域審查申請表_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.2 學位考試委員名冊</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位考試委員名冊_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位考試委員名冊_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.3 論文無抄襲聲明書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文無抄襲聲明書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文無抄襲聲明書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.4 修課狀況調查表</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/修課狀況調查表_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/修課狀況調查表_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.5 論文格式範本</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文格式範本_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文格式範本_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.6 論文撰寫、編排規則及注意事項</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文撰寫、編排規則及注意事項.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    
+                    <!-- 口試當天 -->
+                    <tr class="stage-header">
+                        <td colspan="4">3. 口試當天</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">3.1 口試費領款收據</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/口試費領款收據_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/口試費領款收據_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">3.2 論文口試費用支付標準</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/論文口試費用支付標準_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/論文口試費用支付標準_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+
+                    <!-- 口試後 -->
+                    <tr class="stage-header">
+                        <td colspan="4">4. 口試後</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">4.1離校手續單</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="https://stuinfosys.ntust.edu.tw/SAGraduatesServ/SAGraduates/Edit" target="_blank"><img src="images/link-icon.png" alt="Link" class="file-icon"></a></span></td>
+                    </tr>
+                    
+                    <!-- 其他重要文件 -->
+                    <tr class="stage-header">
+                        <td colspan="4">5. 其他重要文件</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.1 歡迎口試委員貼條</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/歡迎口試委員貼條.doc" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/歡迎口試委員貼條.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.2 基礎必修課程調查表</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/基礎必修課程調查表.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/基礎必修課程調查表.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.3 論文封面（範例）</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文封面（範例）.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.4 論文書背（範例）</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文書背（範例）.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.5 變更論文題目申請書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/變更論文題目申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.6 論文延後公開申請書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開申請書.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.7 論文延後公開系統操作說明書</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開系統操作說明書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.8 論文編排規範</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文編排規範.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.9 碩士論文考試委員提聘資格表</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/碩士論文考試委員提聘資格表.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">5.10 財金所碩士學位畢業論文口試須知</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/財金所碩士學位畢業論文口試須知.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </header>
-
-    <div class="container no-top-padding">
-        <!-- 新增頁籤導航 -->
-        <ul class="nav-tabs">
-            <li><a href="財金所順利畢業SOP.html">首頁</a></li>
-            <li><a href="表單下載.html" class="active">表單下載區</a></li>
-        </ul>
-        
-        <h1>
-            表單下載區
-            <!-- 將字體大小控制區塊整合到標題內 -->
-            <div class="font-size-control">
-                <span>調整字體大小：</span>
-                <button class="font-size-btn" id="decreaseFont">A-</button>
-                <button class="font-size-btn" id="increaseFont">A+</button>
-                <button class="font-size-btn font-size-reset" id="resetFont">重設</button>
-            </div>
-        </h1>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 50%;">檔案名稱</th>
-                    <th style="width: 16%;">Word</th>
-                    <th style="width: 16%;">PDF</th>
-                    <th style="width: 18%;">Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- 入學後一年內 -->
-                <tr class="stage-header">
-                    <td colspan="4">1. 入學後一年內</td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">1.1 論文指導同意書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/論文指導同意書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/論文指導同意書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">1.2 論文共同指導教授同意書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/共同指導教授同意書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/共同指導教授同意書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">1.3 變更論文指導教授申請書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/變更論文指導教授申請書.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/1. 入學後一年內/變更論文指導教授申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                
-                <!-- 口試前 -->
-                <tr class="stage-header">
-                    <td colspan="4">2. 口試前</td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.1 學位論文專業領域審查申請表</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位論文專業領域審查申請表_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位論文專業領域審查申請表_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.2 學位考試委員名冊</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位考試委員名冊_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/學位考試委員名冊_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.3 論文無抄襲聲明書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文無抄襲聲明書_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文無抄襲聲明書_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.4 修課狀況調查表</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/修課狀況調查表_20250515.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/修課狀況調查表_20250515.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.5 論文格式範本</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文格式範本_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文格式範本_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">2.6 論文撰寫、編排規則及注意事項</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/論文撰寫、編排規則及注意事項.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                
-                <!-- 口試當天 -->
-                <tr class="stage-header">
-                    <td colspan="4">3. 口試當天</td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">3.1 口試費領款收據</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/口試費領款收據_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/口試費領款收據_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">3.2 論文口試費用支付標準</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/論文口試費用支付標準_20250520.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/3. 口試當天/論文口試費用支付標準_20250520.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-
-                <!-- 口試後 -->
-                <tr class="stage-header">
-                    <td colspan="4">4. 口試後</td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">4.1離校手續單</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="https://stuinfosys.ntust.edu.tw/SAGraduatesServ/SAGraduates/Edit" target="_blank"><img src="images/link-icon.png" alt="Link" class="file-icon"></a></span></td>
-                </tr>
-                
-                <!-- 其他重要文件 -->
-                <tr class="stage-header">
-                    <td colspan="4">5. 其他重要文件</td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.1 歡迎口試委員貼條</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/歡迎口試委員貼條.doc" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/歡迎口試委員貼條.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.2 基礎必修課程調查表</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/基礎必修課程調查表.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/基礎必修課程調查表.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.3 論文封面（範例）</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文封面（範例）.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.4 論文書背（範例）</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文書背（範例）.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.5 變更論文題目申請書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/變更論文題目申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.6 論文延後公開申請書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開申請書.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開申請書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.7 論文延後公開系統操作說明書</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文延後公開系統操作說明書.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.8 論文編排規範</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/論文編排規範.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.9 碩士論文考試委員提聘資格表</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/碩士論文考試委員提聘資格表.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-                <tr>
-                    <td><span style="font-family:微軟正黑體;">5.10 財金所碩士學位畢業論文口試須知</span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/5. 其他重要文件/財金所碩士學位畢業論文口試須知.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
-                    <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
     <footer>
@@ -473,6 +484,29 @@
     <div class="back-to-top" id="backToTop">↑</div>
     
     <script>
+        // 載入動畫和延遲顯示內容
+        var loadingOverlay = document.getElementById('loading-overlay');
+        var contentContainer = document.getElementById('content-container');
+        
+        // 設定載入時間（毫秒）
+        var loadingTime = 300;  // 可以根據需要調整載入時間
+        
+        // 在頁面載入完成後延遲顯示內容
+        window.addEventListener('load', function() {
+            // 延遲顯示時間
+            setTimeout(function() {
+                // 淡出載入動畫
+                loadingOverlay.style.opacity = '0';
+                // 顯示頁面內容
+                contentContainer.classList.add('show');
+                
+                // 完全移除載入動畫
+                setTimeout(function() {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, loadingTime);
+        });
+        
         // 返回頂部功能
         var backToTopBtn = document.getElementById("backToTop");
         
@@ -493,46 +527,16 @@
             });
         });
         
-        // 字體大小調整功能
+        // 頁面載入時滾動到頂部
         document.addEventListener("DOMContentLoaded", function() {
-            const increaseBtn = document.getElementById("increaseFont");
-            const decreaseBtn = document.getElementById("decreaseFont");
-            const resetBtn = document.getElementById("resetFont");
-            
-            // 獲取或設置當前字體大小
-            let currentSize = localStorage.getItem("fontSizePercentage") || 100;
-            
-            // 初始化頁面字體大小
-            applyFontSize(currentSize);
-            
-            // 增大字體
-            increaseBtn.addEventListener("click", function() {
-                if (currentSize < 150) { // 最大限制150%
-                    currentSize = parseInt(currentSize) + 10;
-                    applyFontSize(currentSize);
-                }
-            });
-            
-            // 減小字體
-            decreaseBtn.addEventListener("click", function() {
-                if (currentSize > 70) { // 最小限制70%
-                    currentSize = parseInt(currentSize) - 10;
-                    applyFontSize(currentSize);
-                }
-            });
-            
-            // 重設字體
-            resetBtn.addEventListener("click", function() {
-                currentSize = 100;
-                applyFontSize(currentSize);
-            });
-            
-            // 應用字體大小到頁面
-            function applyFontSize(size) {
-                document.body.style.fontSize = size + "%";
-                localStorage.setItem("fontSizePercentage", size);
-            }
+            // 確保頁面在頂部
+            window.scrollTo(0, 0);
         });
+        
+        // 頁面重新整理時滾動到頂部
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
     </script>
 </body>
 </html> 
