@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財金所順利畢業 SOP</title>
+    <style>
+        body {
+            font-family: "微軟正黑體", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container.no-top-padding {
+            padding-top: 0;
+        }
+        header {
+            background-color: white;
+            color: #003366;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .school-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .school-logo {
+            height: 60px;
+            margin-right: 10px;
+        }
+        .institute-name {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            font-weight: bold;
+        }
+        .institute-name-en {
+            font-size: 14px;
+            margin-top: 2px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 28px;
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            font-size: 24px;
+            color: #003366;
+            margin-top: 25px;
+        }
+        h3 {
+            font-size: 18px;
+            color: #003366;
+            margin-top: 20px;
+        }
+        ul, ol {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .stage {
+            background-color: #f5f5f5;
+            border-left: 5px solid #003366;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* 畢業流程四階段列表項目粗體 */
+        .stage ol {
+            font-weight: bold;
+        }
+        
+        .deadline {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+        }
+        .document-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .document-link:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #fffcd9;
+            border-left: 5px solid #ffcc00;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* 圖片顯示樣式 */
+        .thumbnail {
+            max-width: 800px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            transition: all 0.3s ease;
+        }
+        .thumbnail:hover {
+            box-shadow: 0 0 8px rgba(0, 102, 204, 0.5);
+        }
+        
+        /* 移除圖片列表項的項目符號 */
+        .no-bullet {
+            list-style-type: none;
+            margin-left: -20px; /* 減少縮排 */
+        }
+        
+        /* 調整巢狀列表的邊距 */
+        li > ul, li > ol {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        /* 減少項目符號間的行距 */
+        li {
+            margin-bottom: 8px;
+        }
+        li > ul > li, li > ol > li {
+            margin-bottom: 3px;
+        }
+        
+        /* 燈箱效果 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        /* 頁籤導航樣式 */
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #f5f5f5;
+            border-bottom: 2px solid #003366;
+        }
+        .nav-tabs li {
+            margin: 0;
+            padding: 0;
+        }
+        .nav-tabs a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .nav-tabs a:hover {
+            background-color: #e0e0e0;
+        }
+        .nav-tabs a.active {
+            background-color: #003366;
+            color: white;
+        }
+        
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #003366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .back-to-top:hover {
+            background-color: #004b8d;
+        }
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        /* 字體大小控制區塊樣式 */
+        .font-size-control {
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .font-size-control span {
+            margin-right: 8px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        
+        .font-size-btn {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin: 0 2px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .font-size-btn:hover {
+            background-color: #004b8d;
+        }
+        
+        .font-size-reset {
+            background-color: #6c757d;
+        }
+        
+        .font-size-reset:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="school-name">
+                <img src="images/台科logo-08.png" alt="國立臺灣科技大學" class="school-logo">
+            </div>
+            <div class="institute-name">
+                <div>財務金融研究所</div>
+                <div class="institute-name-en">Graduate Institute of Finance</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container no-top-padding">
+        <!-- 新增頁籤導航 -->
+        <ul class="nav-tabs">
+            <li><a href="財金所順利畢業SOP.html" class="active">首頁</a></li>
+            <li><a href="表單下載.html">表單下載區</a></li>
+        </ul>
+        
+        <h1>
+            🎓財金所順利畢業 SOP
+            <!-- 將字體大小控制區塊整合到標題內 -->
+            <div class="font-size-control">
+                <span>調整字體大小：</span>
+                <button class="font-size-btn" id="decreaseFont">A-</button>
+                <button class="font-size-btn" id="increaseFont">A+</button>
+                <button class="font-size-btn font-size-reset" id="resetFont">重設</button>
+            </div>
+        </h1>
+
+        <div class="stage">
+            <h2>畢業流程四階段</h2>
+            <ol>
+                <li><a href="#stage1" class="document-link">入學後一年內</a></li>
+                <li><a href="#stage2" class="document-link">口試前</a></li>
+                <li><a href="#stage3" class="document-link">口試當天</a></li>
+                <li><a href="#stage4" class="document-link">口試後</a></li>
+            </ol>
+        </div>
+        
+        <div style="margin: 20px 0; padding: 15px; background-color: #e9f7fd; border-left: 5px solid #0088cc; border-radius: 4px;">
+            <h3 style="margin-top: 0; color: #0088cc;">實用資源</h3>
+            <ul style="margin-bottom: 0;">
+                <li><a href="表單下載.html" class="document-link" style="font-weight: bold;">表單下載區</a> - 所有畢業相關申請文件和表格的彙整</li>
+            </ul>
+        </div>
+
+        <h1 id="stage1">1. 入學後一年內</h1>
+
+        <h2 id="advisor">1.1 確認論文指導教授</h2>
+        <ul>
+            <li><span class="deadline">Deadline：第一學年結束前（7/31）</span></li>
+            <li>所需文件：
+                <ol>
+                    <li><a href="表單下載.html" class="document-link">論文指導同意書</a></li>
+                    <li><a href="表單下載.html" class="document-link">共同指導教授同意書</a>（若有共同指導教授需簽署）</li>
+                </ol>
+            </li>
+            <li>登錄學生資訊系統：<a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Advisor" class="document-link">指導教授維護 - 論文及指導教授系統</a></li>
+            <li class="no-bullet">
+                <img src="images/image.png" alt="指導教授維護系統" class="thumbnail">
+                <img src="images/image 1.png" alt="指導教授維護系統選單" class="thumbnail">
+            </li>
+        </ul>
+
+        <h1 id="stage2">2. 口試前</h1>
+
+        <h2 id="review">2.1 論文專業領域審查</h2>
+        <ul>
+            <li><span class="deadline">Deadline：預計進行論文口試當學期之課程加退選結束前</span></li>
+            <li>將論文資料登錄學生資訊系統：<a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Thesis" class="document-link">論文資料維護 - 論文及指導教授系統</a></li>
+            <li class="no-bullet">
+                <img src="images/image.png" alt="論文資料維護系統" class="thumbnail">
+                <img src="images/image 2.png" alt="論文資料維護選單" class="thumbnail">
+            </li>
+            <li>所需文件：
+                <ol>
+                    <li><a href="表單下載.html" class="document-link">學位論文專業領域審查申請表</a></li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">論文專業領域審查申請表</a>
+                        <br><img src="images/image 3.png" alt="論文專業領域審查申請表" class="thumbnail">
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="writing">2.2 寫論文</h2>
+        <ul>
+            <li>撰寫規則：請參考<a href="表單下載.html" class="document-link">論文撰寫、編排規則及注意事項</a>與<a href="表單下載.html" class="document-link">論文格式範本</a>
+            </li>
+        </ul>
+
+        <h2 id="application">2.3 申請論文口試</h2>
+        <ul>
+            <li>學校規定論文口試之舉辦期間：
+                <ul>
+                    <li>第一學期：十月至一月</li>
+                    <li>第二學期：四月至七月</li>
+                </ul>
+            </li>
+            <li><span class="deadline">Deadline：財金所規定預定口試日期之前兩週需繳交口試申請</span></li>
+            <li>所需文件：
+                <ol>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">學位論文考試申請書</a></li>
+                    <li><a href="表單下載.html" class="document-link">修課狀況調查表</a></li>
+                    <li><a href="表單下載.html" class="document-link">論文無抄襲聲明書</a></li>
+                    <li><a href="表單下載.html" class="document-link">學位考試委員名冊</a>
+                        <ul>
+                            <li>口試委員由指導教授決定</li>
+                            <li>需注意不要從「論文及指導教授系統」下載</li>
+                        </ul>
+                    </li>
+                    <li>論文比對報告 (Moodle／【圖書館】Turnitin 論文比對)
+                        <ul>
+                            <li>僅需附上第一頁與最後一頁</li>
+                        </ul>
+                    </li>
+                    <li>研究所在校成績單 (成績單機台列印 或 <a href="https://stuinfosys.ntust.edu.tw/StuScoreQueryServ/StuScoreQuery/DisplayAll" class="document-link">成績查詢系統</a>)
+                        <br>
+                        <img src="images/image 4.png" alt="成績查詢系統" class="thumbnail">
+                        <img src="images/image 5.png" alt="成績查詢系統" class="thumbnail">
+                        <img src="images/image 6.png" alt="成績查詢系統" class="thumbnail">
+                    </li>
+                    <li>英語檢定成績單
+                        <ul>
+                            <li>此為畢業門檻，詳閱財金所修業規範</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="printing">2.4 列印口試用論文初稿</h2>
+        <ul>
+            <li>指導教授同意後即可列印論文初稿並進行平裝裝訂</li>
+            <li>視店家忙碌程度可當天或隔天領取</li>
+            <li>校內影印店：
+                <ol>
+                    <li>久太影印店
+                        <ul>
+                            <li>地點：學生第三宿舍（女宿）地下一樓</li>
+                            <li>參考價格：論文平裝 NT$36-50 / 本</li>
+                        </ul>
+                        <img src="images/IMG_8688_Large.jpeg" alt="久太影印店位置" class="thumbnail">
+                    </li>
+                    <li>金新影印店
+                        <ul>
+                            <li>地點：學生第一餐廳（摩斯漢堡）地下一樓</li>
+                        </ul>
+                        <img src="images/IMG_8687_Large.jpeg" alt="金新影印店位置" class="thumbnail">
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="email">2.5 口試前兩週至前一週以電子郵件通知口試委員</h2>
+        <ul>
+            <li>口試前需以電子郵件將口試資訊與論文初稿 PDF 檔案計送給口委老師</li>
+            <li>信件範本如下：
+                <div class="note">
+                    敬愛的 XXX教授、XXX教授 您們好，<br><br>
+                    我是財金所二年級學生 XXX，<br>
+                    感謝教授先前應允擔任學生的論文口試委員，茲通知論文口試相關事宜如下：<br><br>
+                    口試時間：XXX 年 XX 月 XX 日（星期X）下午 XX:XX 至 XX:XX<br>
+                    口試地點：臺科大國際大樓 IB-1006 室<br>
+                    論文題目：XXX<br>
+                    指導教授：XXX 博士<br><br>
+                    本場共三位 XXX老師指導之研究生進行口試，<br>
+                    隨函附上學生的論文初稿電子檔，懇請撥冗審閱。紙本論文將同步放置於所辦信箱，煩請鑒察。<br><br>
+                    如有任何疑問，請不吝指教。<br>
+                    期待當日與您們見面，再次感謝您們的寶貴時間。<br><br>
+                    敬請<br>
+                    教安<br><br>
+                    學生 XXX 敬上
+                </div>
+            </li>
+        </ul>
+
+        <h1 id="stage3">3. 口試當天</h1>
+
+        <h2 id="equipment">3.1 前置作業－設備</h2>
+        <ul>
+            <li>與財金所辦借用「筆電」及「簡報筆」，口試簡報存放於所辦筆電，檢查簡報筆電量是否足夠。</li>
+            <li>若使用 IB-1006 教室，提早進入教室進行「EShare 無線投影」及「前後螢幕同步顯示」之操作方式。</li>
+            <li>若使用一般教室，提早進入測試「電腦投影」及「麥克風功能」是否正常。</li>
+        </ul>
+
+        <h2 id="snacks">3.2 前置作業－口委點心及用品</h2>
+        <ul>
+            <li>記得幫口委老師準備口試點心，例如：路易莎飲品及蛋糕。</li>
+            <li>準備「簽名用筆」、「衛生紙」、「備用茶水」等</li>
+        </ul>
+
+        <h2 id="docs">3.3 口試當下－文件</h2>
+        <ul>
+            <li>所需文件：
+                <ol>
+                    <li><a href="表單下載.html" class="document-link">碩士口試費領款收據</a>
+                        <ul>
+                            <li>數量：幾位口委就要印幾張</li>
+                            <li>本國生無論中英文口試，口試費皆為 NT$1,000；外籍生口試，口試費則為 NT$1,200</li>
+                            <li>口委老師若為校內老師，僅需「簽名」及填寫「身分證字號」；口委老師若為校外老師，則每一欄位皆需完整填寫</li>
+                            <li>校內老師不支領交通費；校外老師依服務單位所在地區，參考「論文口試費用支付標準」，核給交通費，注意每位校外口委一天只能支領一次，同場口試學生需協調寫於何位學生之領據</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試評分表</a>
+                        <ul>
+                            <li>數量：幾位口委就要印幾張</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試委員會審定書</a>
+                        <ul>
+                            <li>數量：1 份</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位論文指導教授推薦書</a>
+                        <ul>
+                            <li>數量：1 份</li>
+                        </ul>
+                    </li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">學位論文原創性比對聲明書</a>
+                        <ul>
+                            <li>數量：1 份</li>
+                        </ul>
+                    </li>
+                    <li>論文比對報告 (Moodle／【圖書館】Turnitin 論文比對)
+                        <ul>
+                            <li>數量：幾位口委就要印幾份</li>
+                            <li>需整份報告完整附上</li>
+                        </ul>
+                    </li>
+                    <li>口試簡報
+                        <ul>
+                            <li>數量：幾位口委就要印幾份</li>
+                            <li>方便口委撰寫筆記</li>
+                        </ul>
+                    </li>
+                    <li>紙本論文
+                        <ul>
+                            <li>數量：1-2 本</li>
+                            <li>1 本留作自己在口委講評時撰寫筆記；1 本預備給忘記攜帶紙本論文的口委</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="end">3.4 口試結束－文件</h2>
+        <ul>
+            <li>每份文件需要口委老師簽名處皆需確認是否完整，若為校外口委後續補簽會很麻煩！</li>
+        </ul>
+
+        <h1 id="stage4">4. 口試後</h1>
+
+        <h2 id="docs-after">4.1 口試結束－文件</h2>
+        <ul>
+            <li>所有簽名完畢之文件建議掃描存檔！</li>
+            <li>需繳交至所辦之文件：
+                <ol>
+                    <li><a href="表單下載.html" class="document-link">碩士口試費領款收據</a></li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試評分表</a></li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">學位論文原創性比對聲明書</a></li>
+                </ol>
+            </li>
+            <li>需自行留存之文件：
+                <ol>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試委員會審定書</a></li>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位論文指導教授推薦書</a></li>
+                </ol>
+                <ul>
+                    <li>此兩份文件將掃描放入論文定稿中</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 id="thesis-final">4.2 口試結束－論文</h2>
+        <ul>
+            <li>依口委老師建議修改完畢並經指導教授同意後，即可列印最終定稿。</li>
+            <li>必須繳交：
+                <ol>
+                    <li>財金所辦 1 本</li>
+                    <li>圖書館 1 本</li>
+                </ol>
+                <ul>
+                    <li>其餘要列印幾本由指導教授／自行決定</li>
+                </ul>
+            </li>
+            <li>論文採平裝或精裝由自行決定，若有考慮精裝，建議如下：
+                <div class="note">
+                    先說結論：印「三本精裝 + 一本平裝」，會比印「一本精裝 + 三本平裝」划算。<br><br>
+                    原因：只要印製精裝版論文，就必須要開鋼板膜（NT$1,400 固定成本），再加上老闆祭出三本精裝優惠（1 本原價 NT$650、3 本優惠 NT$840），所以計算結果如圖，選擇三本精裝只比一本精裝多 $90。
+                </div>
+                <ol>
+                    <li>久太影印店
+                        <br><img src="images/IMG_8436.jpg" alt="久太影印店價格" class="thumbnail">
+                    </li>
+                    <li>金新影印店
+                        <br><img src="images/IMG_8509.jpg" alt="金新影印店價格" class="thumbnail">
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="graduation">4.3 離校手續</h2>
+        <ul>
+            <li>將論文定稿交至財金所辦後即可依照畢業生離校手續單上行政處室開始大地遊戲。</li>
+            <li>所需文件：
+                <ol>
+                    <li><a href="https://stuinfosys.ntust.edu.tw/SAGraduatesServ/SAGraduates/Edit" class="document-link">畢業生離校手續單</a>
+                        <br>
+                        <img src="images/image 7.png" alt="離校系統" class="thumbnail">
+                        <img src="images/image 8.png" alt="離校系統" class="thumbnail">
+                    </li>
+                </ol>
+            </li>
+        </ul>
+
+        <h2 id="congrats">4.4 畢業快樂！🎉</h2>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>國立臺灣科技大學 財務金融研究所</p>
+            <p>電話: 02-2730-1095 | 地址: 106臺北市大安區基隆路四段43號國際大樓 10 樓 IB-1005室</p>
+            <p>Email: fn1095@mail.ntust.edu.tw</p>
+        </div>
+    </footer>
+
+    <!-- 燈箱模態視窗 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <!-- 返回頂部按鈕 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+    
+    <script>
+        // 獲取模態視窗
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var closeBtn = document.getElementsByClassName("close")[0];
+        
+        // 設置所有圖片為可點擊縮圖
+        document.addEventListener("DOMContentLoaded", function() {
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                // 排除logo和模態內容圖片
+                if (!imgs[i].classList.contains("modal-content") && !imgs[i].classList.contains("school-logo")) {
+                    // 確保圖片有縮圖類
+                    if (!imgs[i].classList.contains("thumbnail")) {
+                        imgs[i].classList.add("thumbnail");
+                    }
+                    
+                    // 添加點擊事件
+                    imgs[i].onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = this.src;
+                    }
+                }
+            }
+        });
+        
+        // window.onload 事件作為備份
+        window.onload = function() {
+            // 再次檢查確保所有圖片都有縮圖樣式
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                if (!imgs[i].classList.contains("modal-content") && !imgs[i].classList.contains("school-logo") && !imgs[i].classList.contains("thumbnail")) {
+                    imgs[i].classList.add("thumbnail");
+                }
+            }
+        }
+        
+        // 點擊關閉按鈕
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        // 點擊模態視窗外部也可關閉
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // 返回頂部功能
+        var backToTopBtn = document.getElementById("backToTop");
+        
+        // 監聽頁面滾動事件
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+        
+        // 點擊返回頂部
+        backToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+        
+        // 字體大小調整功能
+        document.addEventListener("DOMContentLoaded", function() {
+            const increaseBtn = document.getElementById("increaseFont");
+            const decreaseBtn = document.getElementById("decreaseFont");
+            const resetBtn = document.getElementById("resetFont");
+            
+            // 獲取或設置當前字體大小
+            let currentSize = localStorage.getItem("fontSizePercentage") || 100;
+            
+            // 初始化頁面字體大小
+            applyFontSize(currentSize);
+            
+            // 增大字體
+            increaseBtn.addEventListener("click", function() {
+                if (currentSize < 150) { // 最大限制150%
+                    currentSize = parseInt(currentSize) + 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            // 減小字體
+            decreaseBtn.addEventListener("click", function() {
+                if (currentSize > 70) { // 最小限制70%
+                    currentSize = parseInt(currentSize) - 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            // 重設字體
+            resetBtn.addEventListener("click", function() {
+                currentSize = 100;
+                applyFontSize(currentSize);
+            });
+            
+            // 應用字體大小到頁面
+            function applyFontSize(size) {
+                document.body.style.fontSize = size + "%";
+                localStorage.setItem("fontSizePercentage", size);
+            }
+        });
+    </script>
+</body>
+</html> 
