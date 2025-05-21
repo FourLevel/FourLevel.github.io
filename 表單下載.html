@@ -48,6 +48,9 @@
             border-bottom: 2px solid #003366;
             padding-bottom: 10px;
             margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         h2 {
             font-size: 24px;
@@ -259,6 +262,44 @@
         #content-container.show {
             opacity: 1;
         }
+        
+        /* 字體大小控制區塊樣式 */
+        .font-size-control {
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .font-size-control span {
+            margin-right: 8px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        
+        .font-size-btn {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin: 0 2px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .font-size-btn:hover {
+            background-color: #004b8d;
+        }
+        
+        .font-size-reset {
+            background-color: #6c757d;
+        }
+        
+        .font-size-reset:hover {
+            background-color: #5a6268;
+        }
     </style>
     <!-- 防止頁面閃爍的立即執行代碼 -->
     <script>
@@ -302,7 +343,16 @@
                 <li><a href="表單下載.html" class="active">表單下載區</a></li>
             </ul>
             
-            <h1>表單下載區</h1>
+            <h1>
+                表單下載區
+                <!-- 將字體大小控制區塊整合到標題內 -->
+                <div class="font-size-control">
+                    <span>調整字體大小：</span>
+                    <button class="font-size-btn" id="decreaseFont">A-</button>
+                    <button class="font-size-btn" id="increaseFont">A+</button>
+                    <button class="font-size-btn font-size-reset" id="resetFont">重設</button>
+                </div>
+            </h1>
             
             <table>
                 <thead>
@@ -340,6 +390,12 @@
                     <!-- 口試前 -->
                     <tr class="stage-header">
                         <td colspan="4">2. 口試前</td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">2.0 流程檢核表</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/流程檢核表.docx" download><img src="images/word-icon.png" alt="Word" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="forms/2. 口試前/流程檢核表.pdf" download><img src="images/pdf-icon.png" alt="PDF" class="file-icon"></a></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
                     </tr>
                     <tr>
                         <td><span style="font-family:微軟正黑體;">2.1 學位論文專業領域審查申請表</span></td>
@@ -400,7 +456,13 @@
                         <td colspan="4">4. 口試後</td>
                     </tr>
                     <tr>
-                        <td><span style="font-family:微軟正黑體;">4.1離校手續單</span></td>
+                        <td><span style="font-family:微軟正黑體;">4.1 臺科大博碩士論文系統</span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
+                        <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="https://etheses.lib.ntust.edu.tw/thesis/1/" target="_blank"><img src="images/link-icon.png" alt="Link" class="file-icon"></a></span></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-family:微軟正黑體;">4.2 離校手續單</span></td>
                         <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
                         <td style="text-align: center;"><span style="font-family:微軟正黑體;"></span></td>
                         <td style="text-align: center;"><span style="font-family:微軟正黑體;"><a href="https://stuinfosys.ntust.edu.tw/SAGraduatesServ/SAGraduates/Edit" target="_blank"><img src="images/link-icon.png" alt="Link" class="file-icon"></a></span></td>
@@ -540,6 +602,47 @@
         window.onload = function() {
             window.scrollTo(0, 0);
         };
+        
+        // 字體大小調整功能
+        document.addEventListener("DOMContentLoaded", function() {
+            const increaseBtn = document.getElementById("increaseFont");
+            const decreaseBtn = document.getElementById("decreaseFont");
+            const resetBtn = document.getElementById("resetFont");
+            
+            // 獲取或設置當前字體大小
+            let currentSize = localStorage.getItem("fontSizePercentage") || 100;
+            
+            // 初始化頁面字體大小
+            applyFontSize(currentSize);
+            
+            // 增大字體
+            increaseBtn.addEventListener("click", function() {
+                if (currentSize < 150) { // 最大限制150%
+                    currentSize = parseInt(currentSize) + 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            // 減小字體
+            decreaseBtn.addEventListener("click", function() {
+                if (currentSize > 70) { // 最小限制70%
+                    currentSize = parseInt(currentSize) - 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            // 重設字體
+            resetBtn.addEventListener("click", function() {
+                currentSize = 100;
+                applyFontSize(currentSize);
+            });
+            
+            // 應用字體大小到頁面
+            function applyFontSize(size) {
+                document.body.style.fontSize = size + "%";
+                localStorage.setItem("fontSizePercentage", size);
+            }
+        });
     </script>
 </body>
 </html> 
