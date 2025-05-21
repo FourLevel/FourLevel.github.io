@@ -393,6 +393,8 @@
                 text-align: left;
                 border-bottom: 1px solid #f0f0f0;
                 position: relative;
+                align-items: center; /* 確保內容垂直居中 */
+                justify-content: space-between; /* 左側文字，右側圖示 */
             }
             
             /* 名稱列保持全寬 */
@@ -426,9 +428,28 @@
                 min-width: 50px;
             }
             
-            /* 圖示置中 */
+            /* 圖示容器樣式 */
+            td a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 44px; /* 增加點擊區域 */
+                min-height: 44px; /* 增加點擊區域 */
+            }
+            
+            /* 圖示樣式 */
             td .file-icon {
-                margin-left: auto;
+                width: 32px;
+                height: 32px;
+                margin: 0;
+                display: block;
+            }
+            
+            /* 確保圖示永遠顯示 */
+            .center-icon, .center-icon a {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
             }
             
             /* 調整頁籤在行動裝置上的樣式 */
@@ -456,6 +477,35 @@
                 font-size: 16px;
                 bottom: 15px;
                 right: 15px;
+            }
+            
+            /* 修復表格在手機版的顯示問題 */
+            tbody {
+                width: 100%;
+            }
+            
+            /* 確保每個單元格寬度正確 */
+            td {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            /* 改進圖示顯示 */
+            td:nth-child(2), td:nth-child(3), td:nth-child(4) {
+                min-height: 60px;
+            }
+            
+            /* 修改 a 元素在行動裝置的樣式 */
+            td a {
+                padding: 8px;
+                margin-left: auto; /* 推到右側 */
+            }
+            
+            /* 確保圖示清晰可見 */
+            td span a img.file-icon {
+                display: inline-block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
         }
         
@@ -493,6 +543,17 @@
             tr.stage-header td {
                 font-size: 16px;
                 padding: 8px;
+            }
+            
+            /* 進一步優化圖示在小螢幕上的顯示 */
+            td a {
+                min-width: 36px;
+                min-height: 36px;
+            }
+            
+            td .file-icon {
+                width: 28px;
+                height: 28px;
             }
         }
     </style>
@@ -810,8 +871,33 @@
                 if (parentLink) {
                     parentLink.style.padding = '10px';
                     parentLink.style.display = 'inline-block';
+                    
+                    // 確保圖示在行動裝置上可見
+                    icon.style.display = 'block';
+                    icon.style.opacity = '1';
+                    icon.style.visibility = 'visible';
+                    
+                    // 修正圖示在某些手機上可能的顯示問題
+                    parentLink.addEventListener('click', function(e) {
+                        // 防止點擊無效的情況
+                        if (parentLink.getAttribute('href') && parentLink.getAttribute('href') !== '#') {
+                            return true; // 繼續正常行為
+                        }
+                    });
                 }
             });
+            
+            // 針對行動裝置的特別處理
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // 強制刷新行動裝置上的圖示顯示
+                setTimeout(function() {
+                    document.querySelectorAll('td span a img.file-icon').forEach(function(icon) {
+                        icon.style.display = 'inline-block';
+                        icon.style.opacity = '1';
+                        icon.style.visibility = 'visible';
+                    });
+                }, 500);
+            }
         }
         
         // 返回頂部功能
