@@ -340,6 +340,164 @@
         #content-container.show {
             opacity: 1;
         }
+        
+        /* 行動裝置響應式設計 */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            /* 調整標題和字體大小區塊在行動裝置上的排版 */
+            h1 {
+                font-size: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            h3 {
+                font-size: 16px;
+            }
+            
+            /* 調整學校標頭在行動裝置上的排版 */
+            header .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .institute-name {
+                text-align: center;
+                margin-top: 10px;
+            }
+            
+            /* 字體大小控制區塊在行動裝置上的調整 */
+            .font-size-control {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* 圖片在行動裝置上的最大寬度調整 */
+            .thumbnail {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* 調整頁籤在行動裝置上的樣式 */
+            .nav-tabs {
+                flex-direction: column;
+                display: none; /* 預設隱藏選單 */
+                position: relative;
+                z-index: 100;
+            }
+            
+            .nav-tabs.show {
+                display: flex; /* 當添加 .show 類時顯示選單 */
+            }
+            
+            .nav-tabs a {
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* 漢堡選單按鈕樣式 */
+            .menu-toggle {
+                display: block;
+                background-color: #003366;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            
+            .menu-toggle:hover {
+                background-color: #004b8d;
+            }
+            
+            /* 返回頂部按鈕在行動裝置上的調整 */
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            /* 調整表格在行動裝置上的顯示 */
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            /* 調整燈箱關閉按鈕在行動裝置上的位置 */
+            .close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+            
+            /* 調整燈箱內容在行動裝置上的位置 */
+            .modal {
+                padding-top: 30px;
+            }
+            
+            /* 調整註解和提示框在行動裝置上的邊距 */
+            .note {
+                padding: 8px;
+                margin: 8px 0;
+            }
+            
+            /* 調整列表縮排 */
+            .no-bullet {
+                margin-left: -15px;
+            }
+            
+            li > ul, li > ol {
+                padding-left: 15px;
+            }
+        }
+        
+        /* 隱藏在桌面版的漢堡選單 */
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* 針對更小的手機螢幕 */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            .school-logo {
+                height: 40px;
+            }
+            
+            .font-size-control span {
+                display: none; /* 隱藏「調整字體大小」文字節省空間 */
+            }
+            
+            /* 調整字體大小按鈕在較小螢幕上的排版 */
+            .font-size-btn {
+                padding: 3px 6px;
+                font-size: 12px;
+            }
+        }
     </style>
     <!-- 防止頁面閃爍的立即執行代碼 -->
     <script>
@@ -377,8 +535,11 @@
         </header>
 
         <div class="container no-top-padding">
+            <!-- 新增漢堡選單按鈕 -->
+            <div class="menu-toggle" id="menuToggle">≡ 選單</div>
+            
             <!-- 新增頁籤導航 -->
-            <ul class="nav-tabs">
+            <ul class="nav-tabs" id="navTabs">
                 <li><a href="財金所順利畢業SOP.html" class="active">首頁</a></li>
                 <li><a href="表單下載.html">表單下載區</a></li>
             </ul>
@@ -734,19 +895,13 @@
         var modalImg = document.getElementById("modalImage");
         var closeBtn = document.getElementsByClassName("close")[0];
         
-        // 設置所有圖片為可點擊縮圖
+        // 設置所有圖片為可點擊縮圖並實現延遲載入
         document.addEventListener("DOMContentLoaded", function() {
-            // 移除在head中添加的直接執行代碼，避免重複操作
-            /* // 檢查URL是否包含錨點(#)，如果有則去除
-            if (window.location.hash) {
-                // 通過history API替換URL，移除錨點部分
-                var urlWithoutHash = window.location.href.split('#')[0];
-                history.replaceState(null, document.title, urlWithoutHash);
-                // 確保滾動到頂部
-                window.scrollTo(0, 0);
-            } */
-            
             var imgs = document.getElementsByTagName("img");
+            
+            // 設置圖片懶加載
+            setupLazyLoading(imgs);
+            
             for (var i = 0; i < imgs.length; i++) {
                 // 排除logo和模態內容圖片
                 if (!imgs[i].classList.contains("modal-content") && !imgs[i].classList.contains("school-logo")) {
@@ -759,13 +914,130 @@
                     imgs[i].onclick = function() {
                         modal.style.display = "block";
                         modalImg.src = this.src;
+                        
+                        // 行動裝置上防止頁面滾動
+                        document.body.style.overflow = 'hidden';
                     }
                 }
             }
             
             // 頁面載入時確保在頂部
             window.scrollTo(0, 0);
+            
+            // 檢測裝置類型，並據此調整行為
+            checkDeviceAndAdjustBehavior();
         });
+        
+        // 設置圖片懶加載
+        function setupLazyLoading(images) {
+            // 檢查瀏覽器是否支援 IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            // 使用 data-src 屬性作為真實圖片來源
+                            if (image.getAttribute('data-src')) {
+                                image.src = image.getAttribute('data-src');
+                                image.removeAttribute('data-src');
+                            }
+                            // 停止觀察這個圖片
+                            observer.unobserve(image);
+                        }
+                    });
+                });
+                
+                // 遍歷所有圖片
+                Array.from(images).forEach(img => {
+                    // 排除已加載的圖片和特殊圖片
+                    if (!img.classList.contains("school-logo") && !img.classList.contains("modal-content")) {
+                        // 設置一個低解析度或佔位圖片
+                        const src = img.src;
+                        img.setAttribute('data-src', src);
+                        img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+                        
+                        // 觀察圖片
+                        imageObserver.observe(img);
+                    }
+                });
+            } else {
+                // 瀏覽器不支援 IntersectionObserver，使用備用方案
+                // 可以在這裡實現一個基於滾動事件的懶加載
+                window.addEventListener('scroll', function() {
+                    Array.from(images).forEach(img => {
+                        if (img.getAttribute('data-src') && isInViewport(img)) {
+                            img.src = img.getAttribute('data-src');
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                });
+                
+                // 確保至少第一屏的圖片被加載
+                setTimeout(function() {
+                    Array.from(images).forEach(img => {
+                        if (img.getAttribute('data-src') && isInViewport(img)) {
+                            img.src = img.getAttribute('data-src');
+                            img.removeAttribute('data-src');
+                        }
+                    });
+                }, 300);
+            }
+        }
+        
+        // 檢查元素是否在視口中
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // 檢測裝置類型並調整行為
+        function checkDeviceAndAdjustBehavior() {
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // 為行動裝置增強可點擊區域大小
+                enhanceTouchTargets();
+                
+                // 調整連結行為，防止點擊意外
+                adjustLinkBehavior();
+            }
+        }
+        
+        // 增強可點擊區域大小
+        function enhanceTouchTargets() {
+            // 增加按鈕和連結的點擊區域
+            var buttons = document.querySelectorAll('.font-size-btn, .back-to-top');
+            buttons.forEach(function(btn) {
+                btn.style.minHeight = '44px';
+                btn.style.minWidth = '44px';
+            });
+            
+            // 增加導航標籤的點擊區域
+            var tabLinks = document.querySelectorAll('.nav-tabs a');
+            tabLinks.forEach(function(link) {
+                link.style.padding = '15px';
+            });
+        }
+        
+        // 調整連結行為
+        function adjustLinkBehavior() {
+            // 為文檔連結添加觸控反饋
+            var docLinks = document.querySelectorAll('.document-link');
+            docLinks.forEach(function(link) {
+                link.addEventListener('touchstart', function() {
+                    this.style.backgroundColor = 'rgba(0, 102, 204, 0.1)';
+                });
+                
+                link.addEventListener('touchend', function() {
+                    this.style.backgroundColor = 'transparent';
+                });
+            });
+        }
         
         // 頁面重新整理時滾動到頂部
         window.onload = function() {
@@ -790,14 +1062,35 @@
         // 點擊關閉按鈕
         closeBtn.onclick = function() {
             modal.style.display = "none";
+            // 恢復頁面滾動
+            document.body.style.overflow = '';
         }
         
         // 點擊模態視窗外部也可關閉
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+                // 恢復頁面滾動
+                document.body.style.overflow = '';
             }
         }
+        
+        // 支援行動裝置滑動關閉燈箱
+        var touchStartY = 0;
+        var touchEndY = 0;
+        
+        modal.addEventListener('touchstart', function(e) {
+            touchStartY = e.changedTouches[0].screenY;
+        }, false);
+        
+        modal.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].screenY;
+            if (touchEndY - touchStartY > 50) {
+                // 下滑關閉燈箱
+                modal.style.display = "none";
+                document.body.style.overflow = '';
+            }
+        }, false);
         
         // 返回頂部功能
         var backToTopBtn = document.getElementById("backToTop");
@@ -858,6 +1151,32 @@
                 document.body.style.fontSize = size + "%";
                 localStorage.setItem("fontSizePercentage", size);
             }
+        });
+        
+        // 漢堡選單功能
+        document.addEventListener("DOMContentLoaded", function() {
+            var menuToggle = document.getElementById("menuToggle");
+            var navTabs = document.getElementById("navTabs");
+            
+            // 點擊漢堡選單按鈕顯示/隱藏選單
+            menuToggle.addEventListener("click", function() {
+                navTabs.classList.toggle("show");
+            });
+            
+            // 點擊選單項目後自動隱藏選單
+            var menuItems = navTabs.querySelectorAll("a");
+            menuItems.forEach(function(item) {
+                item.addEventListener("click", function() {
+                    navTabs.classList.remove("show");
+                });
+            });
+            
+            // 點擊頁面其他區域隱藏選單
+            document.addEventListener("click", function(event) {
+                if (!event.target.closest("#navTabs") && !event.target.closest("#menuToggle")) {
+                    navTabs.classList.remove("show");
+                }
+            });
         });
     </script>
 </body>
