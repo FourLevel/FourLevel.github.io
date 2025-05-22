@@ -492,6 +492,47 @@
                 font-size: 12px;
             }
         }
+        
+        /* 添加「所需文件」醒目樣式 */
+        .required-docs {
+            background-color: #f0f7ff;
+            border-left: 5px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .required-docs::before {
+            content: "📋";
+            position: absolute;
+            left: -15px;
+            top: -10px;
+            background-color: #0066cc;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .required-docs-title {
+            color: #0066cc;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        /* 移除所需文件前的圓點項目符號 */
+        li.required-docs {
+            list-style-type: none;
+            margin-left: -20px; /* 調整左邊距，使內容對齊 */
+        }
     </style>
     <!-- 防止頁面閃爍的立即執行代碼 -->
     <script>
@@ -572,7 +613,8 @@
             <h2 id="advisor">1.1 確認論文指導教授</h2>
             <ul>
                 <li><span class="deadline">Deadline：第一學年結束前（7/31）</span></li>
-                <li>所需文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">所需文件：</div>
                     <ol>
                         <li><a href="FormDownloads.html" class="document-link">論文指導同意書</a></li>
                         <li><a href="FormDownloads.html" class="document-link">共同指導教授同意書</a>（若有共同指導教授需簽署）</li>
@@ -595,7 +637,8 @@
                     <img src="images/image.png" alt="論文資料維護系統" class="thumbnail">
                     <img src="images/image 2.png" alt="論文資料維護選單" class="thumbnail">
                 </li>
-                <li>所需文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">所需文件：</div>
                     <ol>
                         <li><a href="FormDownloads.html" class="document-link">學位論文專業領域審查申請表</a></li>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">論文專業領域審查申請表（論文及指導教授系統）</a>
@@ -620,7 +663,8 @@
                     </ul>
                 </li>
                 <li><span class="deadline">Deadline：財金所規定預定口試日期之前兩週需繳交口試申請</span></li>
-                <li>所需文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">所需文件：</div>
                     <ol>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">學位論文考試申請書（論文及指導教授系統）</a></li>
                         <li><a href="FormDownloads.html" class="document-link">修課狀況調查表</a></li>
@@ -716,7 +760,8 @@
 
             <h2 id="docs">3.3 口試當下－文件</h2>
             <ul>
-                <li>所需文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">所需文件：</div>
                     <ol>
                         <li><a href="FormDownloads.html" class="document-link">碩士口試費領款收據</a>
                             <ul>
@@ -778,14 +823,16 @@
             <h2 id="docs-after">4.1 口試結束－文件</h2>
             <ul>
                 <li>所有簽名完畢之文件建議掃描存檔！</li>
-                <li>需繳交至所辦之文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">需繳交至所辦之文件：</div>
                     <ol>
                         <li><a href="FormDownloads.html" class="document-link">碩士口試費領款收據</a></li>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試評分表（論文及指導教授系統）</a></li>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">學位論文原創性比對聲明書（論文及指導教授系統）</a></li>
                     </ol>
                 </li>
-                <li>需自行留存之文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">需自行留存之文件：</div>
                     <ol>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位考試委員會審定書（論文及指導教授系統）</a></li>
                         <li><a href="https://stuinfosys.ntust.edu.tw/ThesisAdvisor/Document" class="document-link">碩士學位論文指導教授推薦書（論文及指導教授系統）</a></li>
@@ -828,7 +875,8 @@
             <h2 id="graduation">4.3 離校手續</h2>
             <ul>
                 <li>將論文定稿交至財金所辦後即可依照畢業生離校手續單上行政處室開始大地遊戲。</li>
-                <li>所需文件：
+                <li class="required-docs">
+                    <div class="required-docs-title">所需文件：</div>
                     <ol>
                         <li><a href="https://stuinfosys.ntust.edu.tw/SAGraduatesServ/SAGraduates/Edit" class="document-link">畢業生離校手續單（校務資訊系統）</a>
                             <br>
