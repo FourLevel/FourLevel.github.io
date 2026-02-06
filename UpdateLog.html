@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日誌－財金所順利畢業 SOP</title>
+    
+    <!-- 網頁圖標 (Favicon) -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/web-app-manifest-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/web-app-manifest-512x512.png">
+    <meta name="msapplication-TileColor" content="#003366">
+    <meta name="theme-color" content="#003366">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+
+    <style>
+        /* 基礎樣式 (與其他頁面共用) */
+        body {
+            font-family: "微軟正黑體", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container.no-top-padding {
+            padding-top: 0;
+        }
+        header {
+            background-color: white;
+            color: #003366;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .school-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .school-logo {
+            height: 60px;
+            margin-right: 10px;
+        }
+        .institute-name {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            font-weight: bold;
+        }
+        .institute-name-en {
+            font-size: 14px;
+            margin-top: 2px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 28px;
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* 頁籤導航樣式 */
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #f5f5f5;
+            border-bottom: 2px solid #003366;
+        }
+        .nav-tabs li {
+            margin: 0;
+            padding: 0;
+        }
+        .nav-tabs a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .nav-tabs a:hover {
+            background-color: #e0e0e0;
+        }
+        .nav-tabs a.active {
+            background-color: #003366;
+            color: white;
+        }
+
+        /* 更新日誌專用樣式 (時間軸) */
+        .log-container {
+            margin-top: 30px;
+            padding: 10px;
+        }
+        .log-entry {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        /* 時間軸圓點 */
+        .log-entry::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background-color: #003366;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        /* 時間軸線條 */
+        .log-entry::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 20px;
+            bottom: -50px;
+            width: 2px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        .log-entry:last-child::after {
+            display: none;
+        }
+        .log-date {
+            font-weight: bold;
+            color: #003366;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: inline-block;
+            background-color: #e9f7fd;
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+        .log-author {
+            font-weight: normal;
+            font-size: 0.833em;
+            margin-left: 10px;
+            color: #555;
+        }
+        .log-content {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .log-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .log-content li {
+            margin-bottom: 5px;
+        }
+
+        /* 返回頂部按鈕樣式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #003366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .back-to-top:hover {
+            background-color: #004b8d;
+        }
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        /* 字體大小控制區塊樣式 */
+        .font-size-control {
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .font-size-control span {
+            margin-right: 8px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        .font-size-btn {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin: 0 2px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        .font-size-btn:hover {
+            background-color: #004b8d;
+        }
+        .font-size-reset {
+            background-color: #6c757d;
+        }
+        .font-size-reset:hover {
+            background-color: #5a6268;
+        }
+
+        /* 載入動畫樣式 */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #003366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #content-container {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #content-container.show {
+            opacity: 1;
+        }
+
+        /* RWD */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 22px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            header .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .institute-name {
+                text-align: center;
+                margin-top: 10px;
+            }
+            .font-size-control {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            .nav-tabs {
+                flex-direction: column;
+                display: flex;
+                position: relative;
+                z-index: 100;
+                margin-bottom: 15px;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            .nav-tabs a {
+                padding: 10px;
+                text-align: center;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .school-logo {
+                height: 40px;
+            }
+            .font-size-control span {
+                display: none;
+            }
+            .font-size-btn {
+                padding: 3px 6px;
+                font-size: 12px;
+            }
+        }
+    </style>
+    <script>
+        (function() {
+            if (window.location.hash) {
+                window.scrollTo(0, 0);
+                var urlWithoutHash = window.location.href.split('#')[0];
+                window.history.replaceState(null, '', urlWithoutHash);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- 載入動畫 -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    
+    <div id="content-container">
+        <header>
+            <div class="container">
+                <div class="school-name">
+                    <img src="images/台科logo-08.png" alt="國立臺灣科技大學" class="school-logo">
+                </div>
+                <div class="institute-name">
+                    <div>財務金融研究所</div>
+                    <div class="institute-name-en">Graduate Institute of Finance</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container no-top-padding">
+            <!-- 頁籤導航 -->
+            <ul class="nav-tabs" id="navTabs">
+                <li><a href="GraduationGuide.html">首頁</a></li>
+                <li><a href="FormDownloads.html">表單下載區</a></li>
+                <li><a href="UpdateLog.html" class="active">更新日誌</a></li>
+            </ul>
+            
+            <h1>
+                網站更新日誌
+                <div class="font-size-control">
+                    <span>調整字體大小：</span>
+                    <button class="font-size-btn" id="decreaseFont">A-</button>
+                    <button class="font-size-btn" id="increaseFont">A+</button>
+                    <button class="font-size-btn font-size-reset" id="resetFont">重設</button>
+                </div>
+            </h1>
+
+            <div class="log-container">
+                <!-- 日誌項目 -->
+                <div class="log-entry">
+                    <div class="log-date">2026/02/05<span class="log-author">維護者：王士誠</span></div>
+                    <div class="log-content">
+                        <ul>
+                            <li>修正 4.2 章節論述，強調論文定稿需先通過圖書館博碩士論文系統審核後，方可印製。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="log-entry">
+                    <div class="log-date">2025/06/01<span class="log-author">維護者：王士誠</span></div>
+                    <div class="log-content">
+                        <ul>
+                            <li>網站正式上線。</li>
+                            <li>整合畢業流程 SOP 與表單下載功能。</li>
+                            <li>將臺科大財金所網站原有之表單進行 Word 及 PDF 重製，提升實用性。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>國立臺灣科技大學 財務金融研究所</p>
+            <p>電話：(02) 2730-1095 | 地址：106335 臺北市大安區基隆路四段 43 號國際大樓 10 樓 IB-1005 室</p>
+            <p>Email: fn1095@mail.ntust.edu.tw</p>
+            <p>製作者：國立臺灣科技大學 財務金融研究所 112 級校友 王士誠</p>
+        </div>
+    </footer>
+
+    <!-- 返回頂部按鈕 -->
+    <div class="back-to-top" id="backToTop">↑</div>
+    
+    <script>
+        // 載入動畫和延遲顯示內容
+        var loadingOverlay = document.getElementById('loading-overlay');
+        var contentContainer = document.getElementById('content-container');
+        var loadingTime = 100;
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                loadingOverlay.style.opacity = '0';
+                contentContainer.classList.add('show');
+                setTimeout(function() {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, loadingTime);
+        });
+        
+        // 返回頂部功能
+        var backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+        backToTopBtn.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        
+        // 字體大小調整功能
+        document.addEventListener("DOMContentLoaded", function() {
+            const increaseBtn = document.getElementById("increaseFont");
+            const decreaseBtn = document.getElementById("decreaseFont");
+            const resetBtn = document.getElementById("resetFont");
+            let currentSize = localStorage.getItem("fontSizePercentage") || 100;
+            
+            applyFontSize(currentSize);
+            
+            increaseBtn.addEventListener("click", function() {
+                if (currentSize < 150) {
+                    currentSize = parseInt(currentSize) + 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            decreaseBtn.addEventListener("click", function() {
+                if (currentSize > 70) {
+                    currentSize = parseInt(currentSize) - 10;
+                    applyFontSize(currentSize);
+                }
+            });
+            
+            resetBtn.addEventListener("click", function() {
+                currentSize = 100;
+                applyFontSize(currentSize);
+            });
+            
+            function applyFontSize(size) {
+                document.body.style.fontSize = size + "%";
+                localStorage.setItem("fontSizePercentage", size);
+            }
+
+            // 行動裝置優化
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                var buttons = document.querySelectorAll('.font-size-btn, .back-to-top, .nav-tabs a');
+                buttons.forEach(function(btn) {
+                    if(btn.tagName === 'A') btn.style.padding = '15px';
+                    else { btn.style.minHeight = '44px'; btn.style.minWidth = '44px'; }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
